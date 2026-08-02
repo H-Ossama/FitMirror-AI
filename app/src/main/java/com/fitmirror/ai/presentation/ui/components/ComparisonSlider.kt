@@ -39,11 +39,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.fitmirror.ai.presentation.ui.theme.DeepPurple
-import com.fitmirror.ai.presentation.ui.theme.ElectricBlue
 import com.fitmirror.ai.presentation.ui.theme.GlassCardShape
 import com.fitmirror.ai.presentation.ui.theme.PillShape
 import com.fitmirror.ai.presentation.ui.theme.PureWhite
-import com.fitmirror.ai.utils.glassmorphic
 import com.fitmirror.ai.utils.pressScale
 
 @Composable
@@ -104,10 +102,10 @@ fun ComparisonSlider(
         Box(
             modifier = Modifier
                 .fillMaxHeight()
-                .width(3.dp)
+                .width(2.dp)
                 .align(Alignment.CenterStart)
                 .padding(start = 0.dp)
-                .background(ElectricBlue)
+                .background(PureWhite)
                 .align { size, space, _ ->
                     androidx.compose.ui.unit.IntOffset(
                         x = (space.width * splitFraction).toInt() - (size.width / 2),
@@ -119,10 +117,10 @@ fun ComparisonSlider(
         // Draggable Circle Handle
         Box(
             modifier = Modifier
-                .size(42.dp)
+                .size(44.dp)
                 .clip(CircleShape)
-                .background(Color.Black.copy(alpha = 0.75f))
-                .border(2.dp, ElectricBlue, CircleShape)
+                .background(Color.Black.copy(alpha = 0.85f))
+                .border(1.5.dp, PureWhite, CircleShape)
                 .align { size, space, _ ->
                     androidx.compose.ui.unit.IntOffset(
                         x = (space.width * splitFraction).toInt() - (size.width / 2),
@@ -153,7 +151,7 @@ fun ComparisonSlider(
                     .padding(horizontal = 14.dp, vertical = 6.dp)
             ) {
                 Text(
-                    text = "Before",
+                    text = "BEFORE",
                     style = MaterialTheme.typography.labelSmall.copy(
                         fontWeight = FontWeight.Bold,
                         color = PureWhite
@@ -164,14 +162,14 @@ fun ComparisonSlider(
             Box(
                 modifier = Modifier
                     .clip(PillShape)
-                    .background(DeepPurple.copy(alpha = 0.85f))
+                    .background(DeepPurple.copy(alpha = 0.9f))
                     .padding(horizontal = 14.dp, vertical = 6.dp)
             ) {
                 Text(
-                    text = "After (AI)",
+                    text = "AFTER (AI)",
                     style = MaterialTheme.typography.labelSmall.copy(
                         fontWeight = FontWeight.Bold,
-                        color = ElectricBlue
+                        color = PureWhite
                     )
                 )
             }
@@ -183,8 +181,8 @@ fun ComparisonSlider(
                 .align(Alignment.BottomCenter)
                 .padding(16.dp)
                 .clip(PillShape)
-                .background(Color.Black.copy(alpha = 0.7f))
-                .glassmorphic(shape = PillShape, borderWidth = 1.dp)
+                .background(Color.Black.copy(alpha = 0.78f))
+                .border(1.dp, Color.White.copy(alpha = 0.35f), PillShape)
                 .padding(4.dp),
             horizontalArrangement = Arrangement.Center
         ) {
@@ -212,16 +210,16 @@ private fun ViewTogglePill(
     Box(
         modifier = Modifier
             .clip(PillShape)
-            .background(if (isSelected) ElectricBlue else Color.Transparent)
+            .background(if (isSelected) PureWhite else Color.Transparent)
             .pressScale(minScale = 0.95f, onClick = onClick)
             .padding(horizontal = 16.dp, vertical = 8.dp),
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = text,
-            style = MaterialTheme.typography.labelMedium.copy(
+            text = text.uppercase(),
+            style = MaterialTheme.typography.labelSmall.copy(
                 fontWeight = FontWeight.Bold,
-                color = if (isSelected) Color.Black else PureWhite.copy(alpha = 0.8f)
+                color = if (isSelected) Color.Black else PureWhite.copy(alpha = 0.85f)
             )
         )
     }

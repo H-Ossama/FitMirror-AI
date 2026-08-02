@@ -67,7 +67,7 @@ fun GeneratingScreen(
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "FitMirror AI Studio",
+                text = "FITMIRROR AI STUDIO",
                 style = MaterialTheme.typography.labelMedium.copy(
                     fontWeight = FontWeight.Bold,
                     color = ElectricBlue

@@ -479,9 +479,10 @@ fun SettingsScreen(
 @Composable
 private fun SettingsSectionTitle(title: String) {
     Text(
-        text = title,
-        style = MaterialTheme.typography.titleLarge.copy(
-            fontWeight = FontWeight.Bold
+        text = title.uppercase(),
+        style = MaterialTheme.typography.labelMedium.copy(
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
         ),
         modifier = Modifier.padding(bottom = 10.dp)
     )

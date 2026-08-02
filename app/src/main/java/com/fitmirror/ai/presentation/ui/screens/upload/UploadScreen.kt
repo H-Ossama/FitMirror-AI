@@ -218,9 +218,10 @@ fun UploadScreen(
 
             // Requirements Checklist Section
             Text(
-                text = "Studio Requirements",
-                style = MaterialTheme.typography.titleMedium.copy(
-                    fontWeight = FontWeight.Bold
+                text = "STUDIO REQUIREMENTS",
+                style = MaterialTheme.typography.labelMedium.copy(
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                 )
             )
             Spacer(modifier = Modifier.height(12.dp))
@@ -262,9 +263,10 @@ fun UploadScreen(
 
             // Image Quality Selector
             Text(
-                text = "Image Quality",
-                style = MaterialTheme.typography.titleMedium.copy(
-                    fontWeight = FontWeight.Bold
+                text = "IMAGE QUALITY",
+                style = MaterialTheme.typography.labelMedium.copy(
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                 )
             )
             Spacer(modifier = Modifier.height(12.dp))
@@ -313,7 +315,7 @@ fun UploadScreen(
                                     Text(
                                         text = option.badge,
                                         style = MaterialTheme.typography.labelSmall.copy(
-                                            color = Color.Black,
+                                            color = PureWhite,
                                             fontWeight = FontWeight.Bold
                                         )
                                     )

@@ -2,114 +2,123 @@ package com.fitmirror.ai.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.fitmirror.ai.R
+
+// Editorial pairing: high-contrast serif display + clean humanist sans.
+val Playfair = FontFamily(Font(R.font.playfair_display))
+val Inter = FontFamily(Font(R.font.inter))
 
 val LuxuryTypography = Typography(
+    // ---- Serif display (editorial headlines) ----
     displayLarge = TextStyle(
-        fontFamily = FontFamily.SansSerif,
-        fontWeight = FontWeight.Bold,
-        fontSize = 42.sp,
-        lineHeight = 48.sp,
-        letterSpacing = (-1.0).sp
+        fontFamily = Playfair,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 44.sp,
+        lineHeight = 50.sp,
+        letterSpacing = (-0.6).sp
     ),
     displayMedium = TextStyle(
-        fontFamily = FontFamily.SansSerif,
-        fontWeight = FontWeight.Bold,
-        fontSize = 34.sp,
-        lineHeight = 40.sp,
-        letterSpacing = (-0.7).sp
-    ),
-    displaySmall = TextStyle(
-        fontFamily = FontFamily.SansSerif,
+        fontFamily = Playfair,
         fontWeight = FontWeight.SemiBold,
-        fontSize = 28.sp,
-        lineHeight = 34.sp,
-        letterSpacing = (-0.5).sp
-    ),
-    headlineLarge = TextStyle(
-        fontFamily = FontFamily.SansSerif,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 26.sp,
-        lineHeight = 32.sp,
+        fontSize = 36.sp,
+        lineHeight = 42.sp,
         letterSpacing = (-0.4).sp
     ),
-    headlineMedium = TextStyle(
-        fontFamily = FontFamily.SansSerif,
+    displaySmall = TextStyle(
+        fontFamily = Playfair,
         fontWeight = FontWeight.SemiBold,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
+        fontSize = 30.sp,
+        lineHeight = 36.sp,
         letterSpacing = (-0.3).sp
     ),
-    headlineSmall = TextStyle(
-        fontFamily = FontFamily.SansSerif,
-        fontWeight = FontWeight.Medium,
-        fontSize = 19.sp,
-        lineHeight = 25.sp,
+    headlineLarge = TextStyle(
+        fontFamily = Playfair,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 27.sp,
+        lineHeight = 33.sp,
         letterSpacing = (-0.2).sp
     ),
-    titleLarge = TextStyle(
-        fontFamily = FontFamily.SansSerif,
+    headlineMedium = TextStyle(
+        fontFamily = Playfair,
         fontWeight = FontWeight.SemiBold,
-        fontSize = 18.sp,
+        fontSize = 23.sp,
+        lineHeight = 29.sp,
+        letterSpacing = (-0.1).sp
+    ),
+    headlineSmall = TextStyle(
+        fontFamily = Playfair,
+        fontWeight = FontWeight.Medium,
+        fontSize = 20.sp,
+        lineHeight = 26.sp,
+        letterSpacing = 0.sp
+    ),
+    // ---- Sans-serif UI ----
+    titleLarge = TextStyle(
+        fontFamily = Inter,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 17.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.sp
     ),
     titleMedium = TextStyle(
-        fontFamily = FontFamily.SansSerif,
+        fontFamily = Inter,
         fontWeight = FontWeight.Medium,
-        fontSize = 16.sp,
+        fontSize = 15.sp,
         lineHeight = 22.sp,
-        letterSpacing = 0.15.sp
+        letterSpacing = 0.sp
     ),
     titleSmall = TextStyle(
-        fontFamily = FontFamily.SansSerif,
+        fontFamily = Inter,
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
         lineHeight = 20.sp,
-        letterSpacing = 0.1.sp
+        letterSpacing = 0.sp
     ),
     bodyLarge = TextStyle(
-        fontFamily = FontFamily.SansSerif,
+        fontFamily = Inter,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.15.sp
+        lineHeight = 26.sp,
+        letterSpacing = 0.sp
     ),
     bodyMedium = TextStyle(
-        fontFamily = FontFamily.SansSerif,
+        fontFamily = Inter,
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp,
-        lineHeight = 21.sp,
-        letterSpacing = 0.25.sp
+        lineHeight = 22.sp,
+        letterSpacing = 0.sp
     ),
     bodySmall = TextStyle(
-        fontFamily = FontFamily.SansSerif,
+        fontFamily = Inter,
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp,
         lineHeight = 18.sp,
-        letterSpacing = 0.3.sp
+        letterSpacing = 0.sp
     ),
+    // ---- Uppercase micro-labels (editorial captions) ----
     labelLarge = TextStyle(
-        fontFamily = FontFamily.SansSerif,
+        fontFamily = Inter,
         fontWeight = FontWeight.SemiBold,
-        fontSize = 14.sp,
-        lineHeight = 20.sp,
-        letterSpacing = 0.5.sp
+        fontSize = 13.sp,
+        lineHeight = 18.sp,
+        letterSpacing = 1.4.sp
     ),
     labelMedium = TextStyle(
-        fontFamily = FontFamily.SansSerif,
-        fontWeight = FontWeight.Medium,
-        fontSize = 12.sp,
+        fontFamily = Inter,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 11.sp,
         lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
+        letterSpacing = 1.2.sp
     ),
     labelSmall = TextStyle(
-        fontFamily = FontFamily.SansSerif,
+        fontFamily = Inter,
         fontWeight = FontWeight.Medium,
         fontSize = 10.sp,
         lineHeight = 14.sp,
-        letterSpacing = 0.5.sp
+        letterSpacing = 1.0.sp
     )
 )
