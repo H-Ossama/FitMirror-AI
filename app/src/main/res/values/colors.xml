@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="deep_purple">#4A154B</color>
+    <color name="electric_blue">#00F0FF</color>
+    <color name="pure_white">#FFFFFF</color>
+    <color name="pure_black">#000000</color>
+    <color name="soft_white">#F8F9FB</color>
+    <color name="light_gray">#E6E8EC</color>
+    <color name="dark_charcoal">#1A1A24</color>
+    <color name="luxury_dark_card">#131318</color>
+    <color name="luxury_dark_gray">#2A2A32</color>
+</resources>
