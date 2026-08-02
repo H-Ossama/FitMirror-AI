@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import com.fitmirror.ai.presentation.ui.theme.DeepPurple
 import com.fitmirror.ai.presentation.ui.theme.ElectricBlue
 import com.fitmirror.ai.presentation.ui.theme.GlassCardShape
+import com.fitmirror.ai.presentation.ui.theme.PureWhite
 
 @Composable
 fun LuxuryPulseLoader(

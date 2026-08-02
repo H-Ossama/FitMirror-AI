@@ -19,8 +19,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Apple
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.PhoneIphone
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
@@ -163,7 +163,7 @@ fun AuthScreen(
                     FitMirrorSecondaryButton(
                         text = "Continue with Apple",
                         onClick = { viewModel.loginWithApple(onNavigateHome) },
-                        icon = Icons.Default.Apple
+                        icon = Icons.Default.PhoneIphone
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
