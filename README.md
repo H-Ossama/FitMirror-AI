@@ -18,19 +18,20 @@
 
 ---
 
-## 🎨 Design System & Luxury Aesthetics
+## 🎨 Design System & Editorial Aesthetics
 
-Inspired by the tactile minimalism of **Apple Liquid Glass**, **Notion**, **Pinterest**, **Zara**, **COS**, and **H&M**, the FitMirror AI interface feels:
-- **Luxury** & **Minimal**
-- **Modern** & **Elegant**
-- **Soft** & **Clean**
+Inspired by the lookbook minimalism of **Zara**, **COS**, **SSENSE**, and **Aesop**, the FitMirror AI interface feels:
+- **Editorial** & **Minimal**
+- **Airy** & **Elegant**
+- **Quiet** & **Confident**
 
 ### ✨ Visual Signatures
-- **Subtle Glassmorphism:** Translucent glass cards (`Modifier.glassmorphic(...)`) with multi-stop border shimmer gradients.
-- **Large White Spacing:** Generous whitespace (`LuxuryDimensions`) to prevent crowded layouts and emphasize high-fashion imagery.
-- **Responsive Typography:** Clean sans-serif editorial typography (`LuxuryTypography`) with negative letter spacing for display titles.
+- **Warm Ivory Canvas:** Soft `#F7F5F0` background with pure-white surfaces and hairline borders — generous whitespace (`LuxuryDimensions`) lets high-fashion photography breathe.
+- **Editorial Typography:** High-contrast **Playfair Display** serif for headlines paired with **Inter** for UI, plus uppercase micro-labels with wide letter spacing.
+- **Monochrome First:** Ink-black primary actions on warm paper, with a single muted **terracotta** accent used sparingly for interactive highlights.
+- **Floating Pill Navigation:** A minimal iOS-style floating capsule with a soft shadow — the selected tab becomes a solid ink pill.
 - **Tactile Animations:** Every button features a spring-physics press scale animation (`Modifier.pressScale(...)`), and every screen transition utilizes smooth directional slides and fades.
-- **Dynamic Themes:** Native support for **Luxury Light** (Soft White & Charcoal) and **Pure Black** (OLED Dark Mode with Deep Purple & Electric Blue accents).
+- **Dynamic Themes:** Native support for **Editorial Light** (Ivory & Ink) and **Night Atelier** (Warm Charcoal with ivory type).
 
 ---
 
@@ -38,12 +39,14 @@ Inspired by the tactile minimalism of **Apple Liquid Glass**, **Notion**, **Pint
 
 | Name | Hex Code | Role |
 | :--- | :--- | :--- |
-| **Deep Purple** | `#4A154B` / `#6C2BD9` | Primary Brand & Luxury Gradient Core |
-| **Electric Blue** | `#00F0FF` / `#2D7EFF` | Accent & Interactive Match Highlights |
-| **Soft White** | `#F8F9FB` | Light Mode Cards & Surfaces |
-| **Pure Black** | `#000000` / `#0A0A0E` | Dark Mode Backgrounds & Modal Overlays |
-| **Luxury Dark Card** | `#13131A` | OLED Glass Surface in Dark Theme |
-| **Dark Charcoal** | `#1A1A24` | Primary Text in Light Theme |
+| **Ink (Deep Purple)** | `#16150F` | Primary Action & Editorial Text |
+| **Terracotta (Electric Blue)** | `#B4573A` | Single Warm Accent & Interactive Highlights |
+| **Ivory (Soft White)** | `#F7F5F0` | Warm Background Canvas |
+| **Pure White** | `#FFFFFF` | Cards & Surfaces |
+| **Hairline (Light Gray)** | `#E6E2D8` | Borders & Dividers |
+| **Stone (Medium Gray)** | `#8C887A` | Tertiary Text & Captions |
+| **Night** | `#121110` | Dark Theme Background |
+| **Night Surface** | `#1C1A16` | Dark Theme Cards |
 
 ---
 
@@ -66,15 +69,15 @@ Inspired by the tactile minimalism of **Apple Liquid Glass**, **Notion**, **Pint
 ```
 
 ### Screen Breakdown
-1. **Splash (`SplashScreen.kt`)**: Monogram logo with smooth scale/alpha pulse and luxury hero gradient background.
-2. **Onboarding (`OnboardingScreen.kt`)**: 3-page `HorizontalPager` with bespoke glass card previews and animated pill indicators.
-3. **Authentication (`AuthScreen.kt`)**: Centered luxury minimal login for Google, Apple, Email, and Guest Mode with interactive Privacy Policy and Terms modals.
+1. **Splash (`SplashScreen.kt`)**: Serif FM monogram in a hairline circle with smooth scale/alpha pulse on a warm ivory canvas.
+2. **Onboarding (`OnboardingScreen.kt`)**: 3-page `HorizontalPager` with full-bleed editorial imagery, serif headlines, and ink pill indicators.
+3. **Authentication (`AuthScreen.kt`)**: Centered editorial login for Google, Apple, Email, and Guest Mode with hairline inputs, ink buttons, and Privacy/Terms modals.
 4. **Home (`HomeScreen.kt`)**: Dynamic greeting based on time of day, remaining credits badge, active subscription status pill, horizontal recent try-ons gallery, and curated high-fashion catalog.
 5. **Upload (`UploadScreen.kt`)**: Large interactive upload cards ("Your Photo" & "Clothing Image") with avatar/garment selectors, checkmark requirements checklist (`✔ Full Body`, `✔ Standing Position`, etc.), and quality selectors (`Standard`, `HD`, `4K`).
 6. **Generating (`GeneratingScreen.kt`)**: Geometric pulse loader (`LuxuryPulseLoader`), animated status cycler (`Finding body...` → `Analyzing clothes...` → `Matching pose...` → `Generating...`), and smooth progress bar.
 7. **Results (`ResultsScreen.kt`)**: Interactive split-screen **Before / After swipe comparison slider** (`ComparisonSlider`), Front / Back view selector, fit score badge (`98% Match`), and quick actions (`Save`, `Download`, `Share`, `Generate Again`, `Try Another Outfit`).
 8. **History (`HistoryScreen.kt`)**: Responsive 2-column grid of previous looks with instant search filtering, favorite toggles, and destructive confirmation dialogs (`ConfirmDialog`).
-9. **Subscription (`SubscriptionScreen.kt`)**: Pricing tiers (`Free`, `Pro`, `Plus`) with highlighted electric blue and gold shimmer card for the popular `Pro` plan, plus Monthly / Annual billing toggle (`Save 20%`).
+9. **Subscription (`SubscriptionScreen.kt`)**: Pricing tiers (`Free`, `Pro`, `Plus`) with a terracotta-highlighted popular `Pro` plan, plus Monthly / Annual billing toggle (`Save 20%`).
 10. **Settings (`SettingsScreen.kt`)**: Profile summary, theme selector (`System`, `Light`, `Dark`), language switcher (`English`, `French`, `Italian`, `Japanese`, `Spanish`), push notification switch, privacy policy/terms modals, and account deletion dialog.
 
 ---
@@ -102,7 +105,7 @@ app/src/main/java/com/fitmirror/ai/
 ├── di/
 │   └── AppModule.kt         # Dagger-Hilt DI bindings for repositories & use cases
 └── utils/
-    ├── Glassmorphism.kt     # Apple Liquid Glass modifiers & border gradient brushes
+    ├── Glassmorphism.kt     # Editorial surface modifiers (white cards + hairline borders)
     ├── AnimationUtils.kt    # Spring-physics button scaling & transition specs
     └── WindowSizeUtils.kt   # Responsive layout helpers for phones, foldables & tablets
 ```
@@ -112,11 +115,11 @@ app/src/main/java/com/fitmirror/ai/
 ## 🚀 Reusable Component Library (`presentation/ui/components/`)
 
 - `FitMirrorPrimaryButton`, `FitMirrorSecondaryButton`, `FitMirrorHeroButton`: Interactive buttons with spring physics press scale (`Modifier.pressScale()`).
-- `LuxuryCard`, `ElevatedLuxuryCard`: Apple Liquid Glass surface cards with border sheen (`Modifier.glassmorphic()`).
+- `LuxuryCard`, `ElevatedLuxuryCard`: Clean white editorial surface cards with hairline borders (`Modifier.glassmorphic()`).
 - `ComparisonSlider`: Custom interactive touch-drag slider for Before/After split image wipes and Front/Back toggle pills.
 - `UploadImageCard`, `RecentTryOnCard`, `CatalogClothingCard`: High-fashion editorial image cards with badges.
 - `LuxuryPulseLoader`, `ScannerAnimation`, `ShimmerSkeleton`: Custom Canvas-based loading animations.
-- `FitMirrorTopAppBar`, `FitMirrorBottomNav`: Translucent headers and floating pill bottom navigation bars with animated selection state.
+- `FitMirrorTopAppBar`, `FitMirrorBottomNav`: Minimal editorial headers and floating pill bottom navigation bars with animated selection state.
 - `ConfirmDialog`, `InfoModal`: Reusable luxury modal dialogues for destructive actions and legal/about documents.
 - `AnimatedStatusCycler`, `LuxuryProgressBar`, `PageIndicator`: Animated progress and step indicators.
 

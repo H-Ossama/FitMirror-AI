@@ -36,6 +36,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.fitmirror.ai.presentation.ui.theme.DeepPurple
 import com.fitmirror.ai.presentation.ui.theme.ElectricBlue
+import com.fitmirror.ai.presentation.ui.theme.ElectricBlueMuted
 import com.fitmirror.ai.presentation.ui.theme.PillShape
 import com.fitmirror.ai.presentation.ui.theme.PureWhite
 import kotlinx.coroutines.delay
@@ -129,7 +130,7 @@ fun LuxuryProgressBar(
                         Brush.horizontalGradient(
                             colors = listOf(
                                 DeepPurple,
-                                ElectricBlue
+                                ElectricBlueMuted
                             )
                         )
                     )

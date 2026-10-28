@@ -2,6 +2,7 @@ package com.fitmirror.ai.presentation.ui.screens.auth
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -19,8 +20,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Apple
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.PhoneIphone
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
@@ -49,7 +50,7 @@ import com.fitmirror.ai.presentation.ui.components.FitMirrorPrimaryButton
 import com.fitmirror.ai.presentation.ui.components.FitMirrorSecondaryButton
 import com.fitmirror.ai.presentation.ui.components.InfoModal
 import com.fitmirror.ai.presentation.ui.components.LuxuryCard
-import com.fitmirror.ai.presentation.ui.theme.ElectricBlue
+import com.fitmirror.ai.presentation.ui.theme.DeepPurple
 import com.fitmirror.ai.presentation.ui.theme.ErrorRed
 import com.fitmirror.ai.presentation.ui.theme.LuxuryDimensions
 import com.fitmirror.ai.presentation.ui.theme.PillShape
@@ -99,7 +100,8 @@ fun AuthScreen(
                 modifier = Modifier
                     .size(80.dp)
                     .clip(CircleShape)
-                    .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.15f)),
+                    .background(MaterialTheme.colorScheme.surface)
+                    .border(width = 1.dp, color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.15f), shape = CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Image(
@@ -163,7 +165,7 @@ fun AuthScreen(
                     FitMirrorSecondaryButton(
                         text = "Continue with Apple",
                         onClick = { viewModel.loginWithApple(onNavigateHome) },
-                        icon = Icons.Default.Apple
+                        icon = Icons.Default.PhoneIphone
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
@@ -180,8 +182,10 @@ fun AuthScreen(
                         singleLine = true,
                         shape = PillShape,
                         colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = ElectricBlue,
-                            unfocusedBorderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f)
+                            focusedBorderColor = DeepPurple,
+                            unfocusedBorderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.25f),
+                            focusedContainerColor = MaterialTheme.colorScheme.surface,
+                            unfocusedContainerColor = MaterialTheme.colorScheme.surface
                         ),
                         modifier = Modifier.fillMaxWidth(),
                         keyboardOptions = KeyboardOptions(
@@ -216,7 +220,8 @@ fun AuthScreen(
                     if (uiState.isLoading) {
                         Spacer(modifier = Modifier.height(16.dp))
                         CircularProgressIndicator(
-                            color = ElectricBlue,
+                            color = DeepPurple,
+                            strokeWidth = 2.dp,
                             modifier = Modifier.size(24.dp)
                         )
                     }

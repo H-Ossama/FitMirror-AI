@@ -38,12 +38,12 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.fitmirror.ai.domain.model.ClothingItem
 import com.fitmirror.ai.domain.model.TryOnResult
+import com.fitmirror.ai.presentation.ui.theme.DeepPurple
 import com.fitmirror.ai.presentation.ui.theme.ElectricBlue
 import com.fitmirror.ai.presentation.ui.theme.FitMatchGreen
 import com.fitmirror.ai.presentation.ui.theme.GlassCardShape
 import com.fitmirror.ai.presentation.ui.theme.PureWhite
 import com.fitmirror.ai.presentation.ui.theme.SoftWhite
-import com.fitmirror.ai.utils.glassmorphic
 
 @Composable
 fun UploadImageCard(
@@ -91,13 +91,13 @@ fun UploadImageCard(
                         .padding(14.dp)
                         .size(36.dp)
                         .clip(CircleShape)
-                        .background(ElectricBlue),
+                        .background(DeepPurple),
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
                         imageVector = Icons.Default.Check,
                         contentDescription = "Selected",
-                        tint = Color.Black,
+                        tint = PureWhite,
                         modifier = Modifier.size(20.dp)
                     )
                 }
@@ -209,10 +209,10 @@ fun RecentTryOnCard(
                         .padding(horizontal = 10.dp, vertical = 5.dp)
                 ) {
                     Text(
-                        text = "${result.fitScore}% Fit",
+                        text = "${result.fitScore}% FIT",
                         style = MaterialTheme.typography.labelSmall.copy(
                             fontWeight = FontWeight.Bold,
-                            color = ElectricBlue
+                            color = PureWhite
                         )
                     )
                 }

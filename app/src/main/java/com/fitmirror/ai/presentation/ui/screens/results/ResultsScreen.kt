@@ -55,7 +55,6 @@ import com.fitmirror.ai.presentation.ui.theme.LuxuryDimensions
 import com.fitmirror.ai.presentation.ui.theme.PillShape
 import com.fitmirror.ai.presentation.ui.theme.PureWhite
 import com.fitmirror.ai.presentation.viewmodels.ResultsViewModel
-import com.fitmirror.ai.utils.glassmorphic
 import com.fitmirror.ai.utils.luxuryHeroGradient
 import kotlinx.coroutines.delay
 
@@ -152,8 +151,8 @@ fun ResultsScreen(
                             ) {
                                 Column {
                                     Text(
-                                        text = result.brand,
-                                        style = MaterialTheme.typography.labelMedium.copy(
+                                        text = result.brand.uppercase(),
+                                        style = MaterialTheme.typography.labelSmall.copy(
                                             fontWeight = FontWeight.Bold,
                                             color = MaterialTheme.colorScheme.primary
                                         )
@@ -169,11 +168,11 @@ fun ResultsScreen(
                                 Box(
                                     modifier = Modifier
                                         .clip(PillShape)
-                                        .background(ElectricBlue.copy(alpha = 0.2f))
+                                        .background(ElectricBlue.copy(alpha = 0.14f))
                                         .padding(horizontal = 14.dp, vertical = 8.dp)
                                 ) {
                                     Text(
-                                        text = "${result.fitScore}% Match",
+                                        text = "${result.fitScore}% MATCH",
                                         style = MaterialTheme.typography.labelMedium.copy(
                                             fontWeight = FontWeight.Bold,
                                             color = ElectricBlue
@@ -261,7 +260,6 @@ fun ResultsScreen(
                             .fillMaxWidth()
                             .clip(PillShape)
                             .background(Color.Black.copy(alpha = 0.88f))
-                            .glassmorphic(shape = PillShape, borderWidth = 1.dp)
                             .padding(horizontal = 20.dp, vertical = 14.dp),
                         contentAlignment = Alignment.Center
                     ) {

@@ -47,7 +47,7 @@ import com.fitmirror.ai.presentation.ui.components.FitMirrorBottomNav
 import com.fitmirror.ai.presentation.ui.components.FitMirrorTopAppBar
 import com.fitmirror.ai.presentation.ui.components.LuxuryCard
 import com.fitmirror.ai.presentation.ui.components.RecentTryOnCard
-import com.fitmirror.ai.presentation.ui.theme.ElectricBlue
+import com.fitmirror.ai.presentation.ui.theme.DeepPurple
 import com.fitmirror.ai.presentation.ui.theme.ErrorRed
 import com.fitmirror.ai.presentation.ui.theme.LuxuryDimensions
 import com.fitmirror.ai.presentation.ui.theme.PillShape
@@ -133,8 +133,10 @@ fun HistoryScreen(
                     singleLine = true,
                     shape = PillShape,
                     colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = ElectricBlue,
-                        unfocusedBorderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.18f)
+                        focusedBorderColor = DeepPurple,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.22f),
+                        focusedContainerColor = MaterialTheme.colorScheme.surface,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.surface
                     ),
                     modifier = Modifier.fillMaxWidth()
                 )

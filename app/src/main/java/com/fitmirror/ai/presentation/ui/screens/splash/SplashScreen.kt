@@ -3,8 +3,8 @@ package com.fitmirror.ai.presentation.ui.screens.splash
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,15 +27,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.fitmirror.ai.R
+import androidx.compose.ui.unit.sp
 import com.fitmirror.ai.presentation.ui.theme.ElectricBlue
-import com.fitmirror.ai.presentation.ui.theme.PureWhite
+import com.fitmirror.ai.presentation.ui.theme.Hairline
 import com.fitmirror.ai.utils.luxuryHeroGradient
 import kotlinx.coroutines.delay
 
@@ -52,14 +49,14 @@ fun SplashScreen(
         label = "splashAlpha"
     )
     val scale by animateFloatAsState(
-        targetValue = if (isVisible) 1f else 0.88f,
+        targetValue = if (isVisible) 1f else 0.9f,
         animationSpec = tween(durationMillis = 900, easing = FastOutSlowInEasing),
         label = "splashScale"
     )
 
     LaunchedEffect(Unit) {
         isVisible = true
-        delay(2200)
+        delay(2000)
         onNavigateNext()
     }
 
@@ -77,40 +74,53 @@ fun SplashScreen(
                 .scale(scale)
                 .padding(32.dp)
         ) {
+            // Editorial monogram: hairline circle with serif initials
             Box(
                 modifier = Modifier
-                    .size(124.dp)
+                    .size(96.dp)
                     .clip(CircleShape)
-                    .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)),
+                    .background(MaterialTheme.colorScheme.surface)
+                    .border(width = 1.dp, color = Hairline, shape = CircleShape),
                 contentAlignment = Alignment.Center
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.logo_fitmirror),
-                    contentDescription = stringResource(id = R.string.app_name),
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .size(112.dp)
-                        .clip(CircleShape)
+                Text(
+                    text = "FM",
+                    style = MaterialTheme.typography.headlineLarge.copy(
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
                 )
             }
 
-            Spacer(modifier = Modifier.height(28.dp))
+            Spacer(modifier = Modifier.height(32.dp))
 
             Text(
-                text = stringResource(id = R.string.app_name),
-                style = MaterialTheme.typography.displaySmall.copy(
+                text = "FITMIRROR",
+                style = MaterialTheme.typography.labelMedium.copy(
                     fontWeight = FontWeight.Bold,
-                    color = PureWhite
+                    letterSpacing = 4.sp,
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                 )
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(10.dp))
 
             Text(
-                text = stringResource(id = R.string.tagline),
-                style = MaterialTheme.typography.titleMedium.copy(
+                text = "See yourself before you buy.",
+                style = MaterialTheme.typography.headlineSmall.copy(
                     fontWeight = FontWeight.Medium,
-                    color = ElectricBlue.copy(alpha = 0.9f)
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.75f)
+                ),
+                textAlign = TextAlign.Center
+            )
+
+            Spacer(modifier = Modifier.height(6.dp))
+
+            Text(
+                text = "VIRTUAL TRY-ON ATELIER",
+                style = MaterialTheme.typography.labelSmall.copy(
+                    color = ElectricBlue,
+                    fontWeight = FontWeight.SemiBold
                 ),
                 textAlign = TextAlign.Center
             )

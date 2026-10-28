@@ -12,10 +12,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.fitmirror.ai.presentation.ui.theme.Hairline
+import com.fitmirror.ai.presentation.ui.theme.NightHairline
+import com.fitmirror.ai.presentation.ui.theme.NightSurface
+import com.fitmirror.ai.presentation.ui.theme.PureWhite
+import com.fitmirror.ai.presentation.ui.theme.SoftWhite
 
 /**
- * Applies Apple Liquid Glass inspired luxury glassmorphic card styling.
- * Soft translucent background with subtle shimmering border gradient.
+ * Editorial minimal surface: solid warm-white (or warm-dark) card
+ * with a single hairline border. Replaces the former neon glass look.
  */
 @Composable
 fun Modifier.glassmorphic(
@@ -25,36 +30,24 @@ fun Modifier.glassmorphic(
 ): Modifier = composed {
     val darkTheme = isSystemInDarkTheme()
     val surfaceColor = if (darkTheme) {
-        Color(0xFF16161D).copy(alpha = customAlpha ?: 0.75f)
+        NightSurface.copy(alpha = customAlpha ?: 0.98f)
     } else {
-        Color(0xFFFFFFFF).copy(alpha = customAlpha ?: 0.85f)
+        PureWhite.copy(alpha = customAlpha ?: 0.96f)
     }
-    val borderColors = if (darkTheme) {
-        listOf(
-            Color(0xFF8A2BE2).copy(alpha = 0.45f),
-            Color(0xFF00F0FF).copy(alpha = 0.25f),
-            Color(0xFFFFFFFF).copy(alpha = 0.08f)
-        )
-    } else {
-        listOf(
-            Color(0xFFFFFFFF).copy(alpha = 0.95f),
-            Color(0xFF3E1B6B).copy(alpha = 0.22f),
-            Color(0xFF00F0FF).copy(alpha = 0.15f)
-        )
-    }
+    val borderColor = if (darkTheme) NightHairline else Hairline
 
     this
         .clip(shape)
         .background(surfaceColor)
         .border(
             width = borderWidth,
-            brush = Brush.linearGradient(borderColors),
+            color = borderColor,
             shape = shape
         )
 }
 
 /**
- * Luxury gradient background brush for splash & hero sections.
+ * Soft editorial background gradient — warm ivory fading to white.
  */
 @Composable
 fun luxuryHeroGradient(): Brush {
@@ -62,17 +55,16 @@ fun luxuryHeroGradient(): Brush {
     return if (darkTheme) {
         Brush.verticalGradient(
             colors = listOf(
-                Color(0xFF0B0B0F),
-                Color(0xFF170E28),
-                Color(0xFF0D0D14)
+                Color(0xFF121110),
+                Color(0xFF1C1A16)
             )
         )
     } else {
         Brush.verticalGradient(
             colors = listOf(
-                Color(0xFFF9FAFF),
-                Color(0xFFF3EEFC),
-                Color(0xFFEEF5FF)
+                SoftWhite,
+                Color(0xFFFAF9F6),
+                PureWhite
             )
         )
     }

@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.History
@@ -37,10 +36,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.fitmirror.ai.presentation.ui.theme.DeepPurple
-import com.fitmirror.ai.presentation.ui.theme.ElectricBlue
 import com.fitmirror.ai.presentation.ui.theme.PillShape
 import com.fitmirror.ai.presentation.ui.theme.PureWhite
-import com.fitmirror.ai.utils.glassmorphic
 
 enum class BottomNavItem(
     val route: String,
@@ -49,10 +46,14 @@ enum class BottomNavItem(
 ) {
     HOME("home_screen", "Home", Icons.Default.Home),
     HISTORY("history_screen", "History", Icons.Default.History),
-    SUBSCRIPTION("subscription_screen", "Subscription", Icons.Default.AutoAwesome),
-    SETTINGS("settings_screen", "Settings", Icons.Default.Settings)
+    SUBSCRIPTION("subscription_screen", "Studio", Icons.Default.AutoAwesome),
+    SETTINGS("settings_screen", "Profile", Icons.Default.Settings)
 }
 
+/**
+ * Floating minimal pill navigation — warm-white capsule with a hairline
+ * border and a soft shadow. Selected tab becomes a solid ink pill.
+ */
 @Composable
 fun FitMirrorBottomNav(
     currentRoute: String,
@@ -63,21 +64,22 @@ fun FitMirrorBottomNav(
         modifier = modifier
             .fillMaxWidth()
             .navigationBarsPadding()
-            .padding(horizontal = 24.dp, vertical = 14.dp),
+            .padding(horizontal = 40.dp, vertical = 12.dp),
         contentAlignment = Alignment.Center
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(68.dp)
+                .height(62.dp)
                 .shadow(
-                    elevation = 20.dp,
+                    elevation = 12.dp,
                     shape = PillShape,
-                    ambientColor = Color.Black.copy(alpha = 0.25f),
-                    spotColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.35f)
+                    ambientColor = Color.Black.copy(alpha = 0.10f),
+                    spotColor = Color.Black.copy(alpha = 0.14f)
                 )
-                .glassmorphic(shape = PillShape, borderWidth = 1.2.dp)
-                .padding(horizontal = 12.dp),
+                .clip(PillShape)
+                .background(MaterialTheme.colorScheme.surface)
+                .padding(horizontal = 8.dp, vertical = 6.dp),
             horizontalArrangement = Arrangement.SpaceAround,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -104,18 +106,17 @@ private fun BottomNavItemButton(
         label = "navBgColor"
     )
     val contentColor by animateColorAsState(
-        targetValue = if (isSelected) PureWhite else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.55f),
+        targetValue = if (isSelected) PureWhite else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
         label = "navContentColor"
     )
     val horizontalPadding by animateDpAsState(
-        targetValue = if (isSelected) 16.dp else 10.dp,
+        targetValue = if (isSelected) 16.dp else 8.dp,
         animationSpec = spring(),
         label = "navPadding"
     )
 
-    Box(
+    Row(
         modifier = Modifier
-            .height(44.dp)
             .clip(PillShape)
             .background(backgroundColor)
             .clickable(
@@ -123,29 +124,26 @@ private fun BottomNavItemButton(
                 indication = null,
                 onClick = onClick
             )
-            .padding(horizontal = horizontalPadding),
-        contentAlignment = Alignment.Center
+            .padding(horizontal = horizontalPadding)
+            .height(48.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
-        ) {
-            Icon(
-                imageVector = item.icon,
-                contentDescription = item.title,
-                tint = contentColor,
-                modifier = Modifier.size(20.dp)
-            )
-            if (isSelected) {
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(
-                    text = item.title,
-                    style = MaterialTheme.typography.labelMedium.copy(
-                        fontWeight = FontWeight.Bold,
-                        color = contentColor
-                    )
+        Icon(
+            imageVector = item.icon,
+            contentDescription = item.title,
+            tint = contentColor,
+            modifier = Modifier.size(20.dp)
+        )
+        if (isSelected) {
+            Spacer(modifier = Modifier.width(7.dp))
+            Text(
+                text = item.title,
+                style = MaterialTheme.typography.labelSmall.copy(
+                    fontWeight = FontWeight.Bold,
+                    color = contentColor
                 )
-            }
+            )
         }
     }
 }

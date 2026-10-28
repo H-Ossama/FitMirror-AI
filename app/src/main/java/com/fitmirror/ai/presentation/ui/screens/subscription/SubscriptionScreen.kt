@@ -52,7 +52,6 @@ import com.fitmirror.ai.presentation.ui.theme.LuxuryGold
 import com.fitmirror.ai.presentation.ui.theme.PillShape
 import com.fitmirror.ai.presentation.ui.theme.PureWhite
 import com.fitmirror.ai.presentation.viewmodels.SubscriptionViewModel
-import com.fitmirror.ai.utils.glassmorphic
 import com.fitmirror.ai.utils.luxuryHeroGradient
 import com.fitmirror.ai.utils.pressScale
 import kotlinx.coroutines.delay
@@ -157,7 +156,6 @@ fun SubscriptionScreen(
                             .fillMaxWidth()
                             .clip(PillShape)
                             .background(Color.Black.copy(alpha = 0.9f))
-                            .glassmorphic(shape = PillShape, borderWidth = 1.dp)
                             .padding(horizontal = 20.dp, vertical = 14.dp),
                         contentAlignment = Alignment.Center
                     ) {
@@ -283,7 +281,7 @@ private fun PricingCard(
                             text = "MOST POPULAR",
                             style = MaterialTheme.typography.labelSmall.copy(
                                 fontWeight = FontWeight.Bold,
-                                color = Color.Black
+                                color = PureWhite
                             )
                         )
                     }

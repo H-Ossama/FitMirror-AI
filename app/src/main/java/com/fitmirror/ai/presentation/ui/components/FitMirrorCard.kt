@@ -5,8 +5,6 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -24,7 +22,7 @@ fun LuxuryCard(
     modifier: Modifier = Modifier,
     shape: Shape = GlassCardShape,
     borderWidth: Dp = 1.dp,
-    elevation: Dp = 8.dp,
+    elevation: Dp = 6.dp,
     onClick: (() -> Unit)? = null,
     contentPadding: Dp = LuxuryDimensions.cardPadding,
     content: @Composable BoxScope.() -> Unit
@@ -33,8 +31,8 @@ fun LuxuryCard(
         .shadow(
             elevation = elevation,
             shape = shape,
-            ambientColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.08f),
-            spotColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.12f)
+            ambientColor = androidx.compose.ui.graphics.Color.Black.copy(alpha = 0.06f),
+            spotColor = androidx.compose.ui.graphics.Color.Black.copy(alpha = 0.08f)
         )
         .glassmorphic(shape = shape, borderWidth = borderWidth)
 
@@ -60,8 +58,8 @@ fun ElevatedLuxuryCard(
     LuxuryCard(
         modifier = modifier,
         shape = shape,
-        borderWidth = 1.2.dp,
-        elevation = 14.dp,
+        borderWidth = 1.dp,
+        elevation = 10.dp,
         onClick = onClick,
         content = content
     )

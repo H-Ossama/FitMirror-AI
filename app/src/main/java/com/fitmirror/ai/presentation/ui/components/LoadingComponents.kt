@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import com.fitmirror.ai.presentation.ui.theme.DeepPurple
 import com.fitmirror.ai.presentation.ui.theme.ElectricBlue
 import com.fitmirror.ai.presentation.ui.theme.GlassCardShape
+import com.fitmirror.ai.presentation.ui.theme.PureWhite
 
 @Composable
 fun LuxuryPulseLoader(
@@ -74,32 +75,32 @@ fun LuxuryPulseLoader(
 
             // Outer pulse ring
             drawCircle(
-                color = ElectricBlue.copy(alpha = alpha),
+                color = DeepPurple.copy(alpha = alpha),
                 radius = maxRadius * radiusScale,
                 center = center,
-                style = Stroke(width = 3.dp.toPx())
+                style = Stroke(width = 1.5.dp.toPx())
             )
 
-            // Inner luxury glowing ring
+            // Inner editorial ring
             drawCircle(
-                color = DeepPurple.copy(alpha = alpha * 0.7f),
-                radius = maxRadius * radiusScale * 0.65f,
+                color = ElectricBlue.copy(alpha = alpha * 0.8f),
+                radius = maxRadius * radiusScale * 0.62f,
                 center = center,
-                style = Stroke(width = 2.dp.toPx())
+                style = Stroke(width = 1.dp.toPx())
             )
         }
 
-        // Center jewel icon or mirror reflection orb
+        // Center orb
         Box(
             modifier = Modifier
-                .size(size * 0.35f)
+                .size(size * 0.3f)
                 .clip(CircleShape)
                 .background(
                     Brush.radialGradient(
                         colors = listOf(
-                            ElectricBlue,
+                            ElectricBlue.copy(alpha = 0.9f),
                             DeepPurple,
-                            Color.Transparent
+                            DeepPurple.copy(alpha = 0.2f)
                         )
                     )
                 )
@@ -129,9 +130,9 @@ fun ScannerAnimation(
                 brush = Brush.horizontalGradient(
                     colors = listOf(
                         Color.Transparent,
-                        ElectricBlue,
+                        DeepPurple.copy(alpha = 0.85f),
                         PureWhite,
-                        ElectricBlue,
+                        DeepPurple.copy(alpha = 0.85f),
                         Color.Transparent
                     )
                 ),

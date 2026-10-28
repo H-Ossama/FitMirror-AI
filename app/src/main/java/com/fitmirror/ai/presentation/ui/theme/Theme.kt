@@ -14,41 +14,45 @@ import androidx.core.view.WindowCompat
 import com.fitmirror.ai.domain.model.ThemeMode
 
 private val LightColorScheme = lightColorScheme(
-    primary = DeepPurple,
+    primary = DeepPurple,           // Ink
     onPrimary = PureWhite,
-    primaryContainer = SoftWhite,
-    onPrimaryContainer = DeepPurpleDark,
-    secondary = ElectricBlueAccent,
+    primaryContainer = PureWhite,
+    onPrimaryContainer = DarkCharcoal,
+    secondary = ElectricBlue,       // Terracotta accent
     onSecondary = PureWhite,
-    secondaryContainer = LightGray,
+    secondaryContainer = SoftWhite,
     onSecondaryContainer = DarkCharcoal,
-    background = PureWhite,
+    background = SoftWhite,         // Warm ivory
     onBackground = DarkCharcoal,
-    surface = SoftWhite,
+    surface = PureWhite,
     onSurface = DarkCharcoal,
     surfaceVariant = LightGray,
-    onSurfaceVariant = DarkCharcoal,
+    onSurfaceVariant = MediumGray,
+    outline = LightGray,
+    outlineVariant = LightGray.copy(alpha = 0.6f),
     error = ErrorRed,
     onError = PureWhite
 )
 
 private val DarkColorScheme = darkColorScheme(
-    primary = DeepPurpleLight,
-    onPrimary = PureWhite,
-    primaryContainer = LuxuryDarkCard,
-    onPrimaryContainer = PureWhite,
-    secondary = ElectricBlue,
-    onSecondary = PureBlack,
-    secondaryContainer = DeepPurple,
-    onSecondaryContainer = PureWhite,
-    background = PureBlack,
-    onBackground = PureWhite,
-    surface = LuxuryDarkBackground,
-    onSurface = PureWhite,
-    surfaceVariant = LuxuryDarkCard,
-    onSurfaceVariant = LightGray,
+    primary = NightIvory,           // Warm off-white
+    onPrimary = Night,
+    primaryContainer = NightSurface,
+    onPrimaryContainer = NightIvory,
+    secondary = ElectricBlueAccent, // Soft terracotta
+    onSecondary = Night,
+    secondaryContainer = NightSurface,
+    onSecondaryContainer = NightIvory,
+    background = Night,
+    onBackground = NightIvory,
+    surface = NightSurface,
+    onSurface = NightIvory,
+    surfaceVariant = NightHairline,
+    onSurfaceVariant = MediumGray,
+    outline = NightHairline,
+    outlineVariant = NightHairline.copy(alpha = 0.6f),
     error = ErrorRed,
-    onError = PureWhite
+    onError = NightIvory
 )
 
 @Composable

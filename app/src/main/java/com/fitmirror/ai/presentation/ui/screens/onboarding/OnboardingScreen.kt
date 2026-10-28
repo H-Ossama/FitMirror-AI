@@ -22,7 +22,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.AutoAwesome
-import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Checkroom
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Icon
@@ -34,6 +33,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -45,8 +46,8 @@ import com.fitmirror.ai.domain.model.OnboardingPage
 import com.fitmirror.ai.presentation.ui.components.FitMirrorPrimaryButton
 import com.fitmirror.ai.presentation.ui.components.LuxuryCard
 import com.fitmirror.ai.presentation.ui.components.PageIndicator
+import com.fitmirror.ai.presentation.ui.theme.DeepPurple
 import com.fitmirror.ai.presentation.ui.theme.ElectricBlue
-import com.fitmirror.ai.presentation.ui.theme.FitMatchGreen
 import com.fitmirror.ai.presentation.ui.theme.GlassCardShape
 import com.fitmirror.ai.presentation.ui.theme.LuxuryDimensions
 import com.fitmirror.ai.presentation.ui.theme.PureWhite
@@ -86,10 +87,10 @@ fun OnboardingScreen(
                 if (pagerState.currentPage < pages.size - 1) {
                     TextButton(onClick = onFinishOnboarding) {
                         Text(
-                            text = "Skip",
-                            style = MaterialTheme.typography.titleSmall.copy(
+                            text = "SKIP",
+                            style = MaterialTheme.typography.labelMedium.copy(
                                 fontWeight = FontWeight.SemiBold,
-                                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.65f)
+                                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.55f)
                             )
                         )
                     }
@@ -103,17 +104,17 @@ fun OnboardingScreen(
                 OnboardingPageContent(page = pages[pageIndex], index = pageIndex)
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(14.dp))
 
             PageIndicator(
                 pageCount = pages.size,
                 currentPage = pagerState.currentPage,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 12.dp)
+                    .padding(vertical = 10.dp)
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(14.dp))
 
             val isLastPage = pagerState.currentPage == pages.size - 1
             FitMirrorPrimaryButton(
@@ -128,7 +129,7 @@ fun OnboardingScreen(
                     }
                 },
                 icon = if (isLastPage) Icons.Default.AutoAwesome else Icons.Default.ArrowForward,
-                modifier = Modifier.padding(bottom = 24.dp)
+                modifier = Modifier.padding(bottom = 20.dp)
             )
         }
     }
@@ -144,104 +145,77 @@ private fun OnboardingPageContent(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        // Luxury Graphic Card illustrating the page concept
-        LuxuryCard(
-            modifier = Modifier
-                .fillMaxWidth(0.9f)
-                .aspectRatio(1.15f),
-            shape = GlassCardShape,
-            contentPadding = 16.dp
-        ) {
-            Box(modifier = Modifier.fillMaxSize()) {
-                when (index) {
-                    0 -> {
-                        // Page 1: See yourself wearing clothes
-                        AsyncImage(
-                            model = R.drawable.sample_result_trench_front,
-                            contentDescription = "Virtual try-on preview",
-                            contentScale = ContentScale.Crop,
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .clip(GlassCardShape)
+        // Editorial full-bleed imagery
+        if (index == 1) {
+            // Step page: clean hairline card with numbered steps
+            LuxuryCard(
+                modifier = Modifier
+                    .fillMaxWidth(0.94f)
+                    .aspectRatio(1.15f),
+                shape = GlassCardShape,
+                contentPadding = 20.dp
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    StepIconBadge("1. SELF", Icons.Default.Person)
+                    Text("—", color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.35f), fontWeight = FontWeight.Normal)
+                    StepIconBadge("2. GARMENT", Icons.Default.Checkroom)
+                    Text("—", color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.35f), fontWeight = FontWeight.Normal)
+                    StepIconBadge("3. AI", Icons.Default.AutoAwesome)
+                }
+            }
+        } else {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth(0.94f)
+                    .aspectRatio(1.12f)
+                    .clip(GlassCardShape)
+            ) {
+                AsyncImage(
+                    model = if (index == 0) R.drawable.sample_result_trench_front else R.drawable.sample_result_dress_front,
+                    contentDescription = page.title,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
+                )
+
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.BottomStart)
+                        .padding(12.dp)
+                        .clip(GlassCardShape)
+                        .background(Color.Black.copy(alpha = 0.72f))
+                        .padding(horizontal = 12.dp, vertical = 7.dp)
+                ) {
+                    Text(
+                        text = if (index == 0) "AI GARMENT SYNTHESIS" else "ZERO GUESSWORK",
+                        style = MaterialTheme.typography.labelSmall.copy(
+                            fontWeight = FontWeight.Bold,
+                            color = PureWhite
                         )
-                        Box(
-                            modifier = Modifier
-                                .align(Alignment.BottomStart)
-                                .padding(12.dp)
-                                .clip(GlassCardShape)
-                                .background(Color.Black.copy(alpha = 0.7f))
-                                .padding(horizontal = 12.dp, vertical = 6.dp)
-                        ) {
-                            Text(
-                                text = "✨ AI Garment Synthesis",
-                                style = MaterialTheme.typography.labelMedium.copy(
-                                    fontWeight = FontWeight.Bold,
-                                    color = ElectricBlue
-                                )
-                            )
-                        }
-                    }
-                    1 -> {
-                        // Page 2: Three steps (Upload self, Upload clothing, Generate)
-                        Row(
-                            modifier = Modifier.fillMaxSize(),
-                            horizontalArrangement = Arrangement.SpaceEvenly,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            StepIconBadge("1. Self", Icons.Default.Person)
-                            Text("→", color = ElectricBlue, fontWeight = FontWeight.Bold)
-                            StepIconBadge("2. Cloth", Icons.Default.Checkroom)
-                            Text("→", color = ElectricBlue, fontWeight = FontWeight.Bold)
-                            StepIconBadge("3. AI", Icons.Default.AutoAwesome)
-                        }
-                    }
-                    else -> {
-                        // Page 3: Signature style
-                        AsyncImage(
-                            model = R.drawable.sample_result_dress_front,
-                            contentDescription = "Signature style",
-                            contentScale = ContentScale.Crop,
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .clip(GlassCardShape)
-                        )
-                        Box(
-                            modifier = Modifier
-                                .align(Alignment.TopEnd)
-                                .padding(12.dp)
-                                .clip(GlassCardShape)
-                                .background(FitMatchGreen)
-                                .padding(horizontal = 10.dp, vertical = 6.dp)
-                        ) {
-                            Text(
-                                text = "100% Zero Guesswork",
-                                style = MaterialTheme.typography.labelSmall.copy(
-                                    fontWeight = FontWeight.Bold,
-                                    color = PureWhite
-                                )
-                            )
-                        }
-                    }
+                    )
                 }
             }
         }
 
-        Spacer(modifier = Modifier.height(36.dp))
+        Spacer(modifier = Modifier.height(34.dp))
 
         Text(
             text = page.title,
             style = MaterialTheme.typography.displaySmall.copy(
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.SemiBold
             ),
             textAlign = TextAlign.Center
         )
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         Text(
             text = page.subtitle,
             style = MaterialTheme.typography.bodyLarge.copy(
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.65f)
             ),
             textAlign = TextAlign.Center
         )
@@ -257,12 +231,20 @@ private fun OnboardingPageContent(
                     Row(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Icon(
-                            imageVector = Icons.Default.CheckCircle,
-                            contentDescription = null,
-                            tint = ElectricBlue,
-                            modifier = Modifier.size(18.dp)
-                        )
+                        Box(
+                            modifier = Modifier
+                                .size(16.dp)
+                                .clip(CircleShape)
+                                .background(ElectricBlue.copy(alpha = 0.2f)),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .size(6.dp)
+                                    .clip(CircleShape)
+                                    .background(ElectricBlue)
+                            )
+                        }
                         Spacer(modifier = Modifier.width(10.dp))
                         Text(
                             text = point,
@@ -278,26 +260,26 @@ private fun OnboardingPageContent(
 }
 
 @Composable
-private fun StepIconBadge(label: String, icon: androidx.compose.ui.graphics.vector.ImageVector) {
+private fun StepIconBadge(label: String, icon: ImageVector) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Box(
             modifier = Modifier
-                .size(60.dp)
+                .size(56.dp)
                 .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.15f)),
+                .background(MaterialTheme.colorScheme.surfaceVariant),
             contentAlignment = Alignment.Center
         ) {
             Icon(
                 imageVector = icon,
                 contentDescription = label,
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(28.dp)
+                tint = DeepPurple,
+                modifier = Modifier.size(24.dp)
             )
         }
-        Spacer(modifier = Modifier.height(6.dp))
+        Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = label,
-            style = MaterialTheme.typography.labelMedium.copy(
+            style = MaterialTheme.typography.labelSmall.copy(
                 fontWeight = FontWeight.Bold
             )
         )
